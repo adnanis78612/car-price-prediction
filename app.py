@@ -51,9 +51,8 @@ def predict():
         prediction = max(0, prediction)
 
         # Format with ₹ and commas
-        prediction_formatted = f"₹{int(prediction):,}"
-
-        return prediction_formatted
+        prediction_int = int(prediction)
+        return str(prediction_int)
 
     except Exception as e:
         print("Prediction error:", e)

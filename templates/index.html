@@ -125,24 +125,33 @@
         }
 
         function send_data() {
-            // Validate kilometres driven
-            var kms = document.getElementById('kilo_driven').value;
-            if (kms === "" || isNaN(kms) || kms < 0) {
-                alert("Please enter a valid number for kilometres driven.");
-                return;
-            }
+    // Validate kilometres driven
+    var kms = document.getElementById('kilo_driven').value;
+    if (kms === "" || isNaN(kms) || kms < 0) {
+        alert("Please enter a valid number for kilometres driven.");
+        return;
+    }
 
-            var fd = new FormData(document.getElementById('carForm'));
-            var xhr = new XMLHttpRequest();
-            xhr.open('POST', '/predict', true);
-            document.getElementById('prediction').innerHTML = "🔮 Predicting Price... Hold tight!";
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState == XMLHttpRequest.DONE) {
-                    document.getElementById('prediction').innerHTML = "Prediction: ₹" + xhr.responseText + " 🎉";
-                }
-            };
-            xhr.send(fd);
+    var fd = new FormData(document.getElementById('carForm'));
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/predict', true);
+    document.getElementById('prediction').innerHTML = "🔮 Predicting Price... Hold tight!";
+    
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            // Convert response to integer
+            var price = parseInt(xhr.responseText);
+
+            // Format with commas (Indian style)
+            var price_formatted = price.toLocaleString('en-IN');
+
+            // Show prediction
+            document.getElementById('prediction').innerHTML = "Prediction: ₹" + price_formatted + " 🎉";
         }
+    };
+    xhr.send(fd);
+}
+
     </script>
 </body>
 </html>
