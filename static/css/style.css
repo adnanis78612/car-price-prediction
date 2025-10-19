@@ -1,3 +1,4 @@
+<<<<<<< HEAD
  
 body {
     background-image: url(../images/gehu.jpg) ;
@@ -89,3 +90,21 @@ h5 {
     }
 }
  
+=======
+.{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.bg-dark{
+	background-color: #75767B;
+}
+
+
+.mt-50{
+	margin-top: 50px;
+}
+#canvas{
+    border: 2px solid black;
+}
+>>>>>>> c8a41ba (Minimal requirements for deployment)
