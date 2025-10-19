@@ -12,131 +12,27 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Press+Start+2P&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 
-
-    
     <!-- Custom CSS -->
-     <style>
-    * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Make the page full height and use flex layout */
-html, body {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-body {
-    background-image: url(../static/images/gehu.jpg);
-    font-family: 'Roboto', sans-serif;
-    color: #fff;
-    text-align: center;
-    padding: 20px 0;
-}
-
-/* Let main content grow to push footer down */
-.container {
-    flex: 1;
-    padding-bottom: 60px; 
-}
-
-.bg-dark {
-    background-color: #75767B;
-}
-
-.card {
-    background: linear-gradient(135deg, #FC354C, #0ABFBC);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-    border-radius: 20px;
-    color: white;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
-}
-
-.card-header {
-    padding: 20px;
-    background: linear-gradient(145deg, #FF512F, #F09819);
-    border-bottom: 2px solid #fff;
-}
-
-.card-header h1 {
-    color: #fff;
-    font-family: 'Cinzel', serif;
-    font-size: 1.8rem;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-}
-
-.form-group label {
-    color: #ffe700;
-    font-weight: 600;
-}
-
-.form-control {
-    background: rgba(255, 255, 255, 0.9);
-    border: 2px solid #3dcad4;
-    color: #000;
-    font-weight: bold;
-    border-radius: 10px;
-    transition: border 0.3s ease, box-shadow 0.3s ease;
-}
-
-.form-control:focus {
-    border: 2px solid #f3dc0f;
-    box-shadow: 0 0 20px rgba(245, 6, 6, 0.8);
-}
-
-.btn-primary {
-    background: #ff477e;
-    border: none;
-    font-size: 1.2rem;
-    font-family: 'Roboto', sans-serif;
-    color: #fff;
-    text-transform: uppercase;
-    border-radius: 10px;
-    padding: 10px 20px;
-    transition: background 0.3s ease, transform 0.3s ease;
-}
-
-.btn-primary:hover {
-    background: #ff6f91;
-    transform: scale(1.1);
-}
-
-#prediction {
-    font-size: 1.5rem;
-    color: #ffe700;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-    margin-top: 20px;
-}
-
-@media (max-width: 768px) {
-    .card-header h1 {
-        font-size: 1.5rem;
-    }
-}
-
-footer {
-    background-color: #222;
-    color: #fff;
-    text-align: center;
-    padding: 10px 0;
-     position: fixed;
-    bottom: 0;
-    width: 100%;
-}
-
-footer h5 {
-    margin: 0;
-}
-</style>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { height: 100%; display: flex; flex-direction: column; }
+        body { background-image: url(../static/images/gehu.jpg); font-family: 'Roboto', sans-serif; color: #fff; text-align: center; padding: 20px 0; }
+        .container { flex: 1; padding-bottom: 60px; }
+        .bg-dark { background-color: #75767B; }
+        .card { background: linear-gradient(135deg, #FC354C, #0ABFBC); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); border-radius: 20px; color: white; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4); }
+        .card-header { padding: 20px; background: linear-gradient(145deg, #FF512F, #F09819); border-bottom: 2px solid #fff; }
+        .card-header h1 { color: #fff; font-family: 'Cinzel', serif; font-size: 1.8rem; text-shadow: 2px 2px 5px rgba(0,0,0,0.3); }
+        .form-group label { color: #ffe700; font-weight: 600; }
+        .form-control { background: rgba(255,255,255,0.9); border: 2px solid #3dcad4; color: #000; font-weight: bold; border-radius: 10px; transition: border 0.3s ease, box-shadow 0.3s ease; }
+        .form-control:focus { border: 2px solid #f3dc0f; box-shadow: 0 0 20px rgba(245,6,6,0.8); }
+        .btn-primary { background: #ff477e; border: none; font-size: 1.2rem; font-family: 'Roboto', sans-serif; color: #fff; text-transform: uppercase; border-radius: 10px; padding: 10px 20px; transition: background 0.3s ease, transform 0.3s ease; }
+        .btn-primary:hover { background: #ff6f91; transform: scale(1.1); }
+        #prediction { font-size: 1.5rem; color: #ffe700; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); margin-top: 20px; }
+        @media (max-width: 768px) { .card-header h1 { font-size: 1.5rem; } }
+        footer { background-color: #222; color: #fff; text-align: center; padding: 10px 0; position: fixed; bottom: 0; width: 100%; }
+        footer h5 { margin: 0; }
+    </style>
 
     <!-- Scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -160,7 +56,7 @@ footer h5 {
                 </div>
                 <div class="card-body">
                     <h5>Car Price Prediction Model!</h5>
-                    <form method="post" accept-charset="utf-8" name="Modelform">
+                    <form method="post" accept-charset="utf-8" name="Modelform" id="carForm">
                         <div class="form-group">
                             <label><b>Select the Company:</b></label>
                             <select class="form-control" id="company" name="company" required onchange="load_car_models(this.id,'car_models')">
@@ -191,9 +87,9 @@ footer h5 {
                         </div>
                         <div class="form-group">
                             <label><b>Enter Kilometres Driven:</b></label>
-                            <input type="text" class="form-control" id="kilo_driven" name="kilo_driven" placeholder="Enter kilometres driven">
+                            <input type="number" class="form-control" id="kilo_driven" name="kilo_driven" placeholder="Enter kilometres driven" min="0" step="1" required>
                         </div>
-                        <button class="btn btn-primary btn-block" onclick="send_data()">Predict Price 🚀</button>
+                        <button type="button" class="btn btn-primary btn-block" onclick="send_data()">Predict Price 🚀</button>
                     </form>
                     <div>
                         <h4><span id="prediction">Waiting for your input...</span></h4>
@@ -228,13 +124,15 @@ footer h5 {
             {% endfor %}
         }
 
-        function form_handler(event) {
-            event.preventDefault();
-        }
-
         function send_data() {
-            document.querySelector('form').addEventListener("submit", form_handler);
-            var fd = new FormData(document.querySelector('form'));
+            // Validate kilometres driven
+            var kms = document.getElementById('kilo_driven').value;
+            if (kms === "" || isNaN(kms) || kms < 0) {
+                alert("Please enter a valid number for kilometres driven.");
+                return;
+            }
+
+            var fd = new FormData(document.getElementById('carForm'));
             var xhr = new XMLHttpRequest();
             xhr.open('POST', '/predict', true);
             document.getElementById('prediction').innerHTML = "🔮 Predicting Price... Hold tight!";
