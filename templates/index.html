@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head xmlns="http://www.w3.org/1999/xhtml">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Car Price Predictor</title>
@@ -12,204 +12,228 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Press+Start+2P&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 
+
+    
     <!-- Custom CSS -->
-    <style>
-        /* Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+     <style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        /* Full height + flex layout for sticky footer */
-        html, body {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            font-family: 'Roboto', sans-serif;
-            background-image: url(../static/images/gehu.jpg);
-            color: #fff;
-        }
+/* Make the page full height and use flex layout */
+html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
 
-        header {
-            text-align: center;
-            padding: 20px 0;
-        }
+body {
+    background-image: url(../static/images/gehu.jpg);
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
 
-        header h1 {
-            font-family: cursive;
-            font-size: 2rem;
-            font-weight: bold;
-            color: #0c0c0c;
-        }
+/* Let main content grow to push footer down */
+.container {
+    flex: 1;
+    padding-bottom: 60px; 
+}
 
-        main {
-            flex: 1; /* main grows to push footer down */
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            padding: 20px 0;
-        }
+.bg-dark {
+    background-color: #75767B;
+}
 
-        .card {
-            background: linear-gradient(135deg, #FC354C, #0ABFBC);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-            border-radius: 20px;
-            color: white;
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            width: 100%;
-            max-width: 700px;
-        }
+.card {
+    background: linear-gradient(135deg, #FC354C, #0ABFBC);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    color: white;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
-        }
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
 
-        .card-header {
-            padding: 20px;
-            background: linear-gradient(145deg, #FF512F, #F09819);
-            border-bottom: 2px solid #fff;
-        }
+.card-header {
+    padding: 20px;
+    background: linear-gradient(145deg, #FF512F, #F09819);
+    border-bottom: 2px solid #fff;
+}
 
-        .card-header h1 {
-            color: #fff;
-            font-family: 'Cinzel', serif;
-            font-size: 1.8rem;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-        }
+.card-header h1 {
+    color: #fff;
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
 
-        @media (max-width: 768px) {
-            .card-header h1 {
-                font-size: 1.5rem;
-            }
-        }
+.form-group label {
+    color: #ffe700;
+    font-weight: 600;
+}
 
-        .form-group label {
-            color: #ffe700;
-            font-weight: 600;
-        }
+.form-control {
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid #3dcad4;
+    color: #000;
+    font-weight: bold;
+    border-radius: 10px;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
 
-        .form-control {
-            background: rgba(255, 255, 255, 0.9);
-            border: 2px solid #3dcad4;
-            color: #000;
-            font-weight: bold;
-            border-radius: 10px;
-            transition: border 0.3s ease, box-shadow 0.3s ease;
-        }
+.form-control:focus {
+    border: 2px solid #f3dc0f;
+    box-shadow: 0 0 20px rgba(245, 6, 6, 0.8);
+}
 
-        .form-control:focus {
-            border: 2px solid #f3dc0f;
-            box-shadow: 0 0 20px rgba(245, 6, 6, 0.8);
-        }
+.btn-primary {
+    background: #ff477e;
+    border: none;
+    font-size: 1.2rem;
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    text-transform: uppercase;
+    border-radius: 10px;
+    padding: 10px 20px;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
 
-        .btn-primary {
-            background: #ff477e;
-            border: none;
-            font-size: 1.2rem;
-            font-family: 'Roboto', sans-serif;
-            color: #fff;
-            text-transform: uppercase;
-            border-radius: 10px;
-            padding: 10px 20px;
-            transition: background 0.3s ease, transform 0.3s ease;
-        }
+.btn-primary:hover {
+    background: #ff6f91;
+    transform: scale(1.1);
+}
 
-        .btn-primary:hover {
-            background: #ff6f91;
-            transform: scale(1.1);
-        }
+#prediction {
+    font-size: 1.5rem;
+    color: #ffe700;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    margin-top: 20px;
+}
 
-        #prediction {
-            font-size: 1.5rem;
-            color: #ffe700;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-            margin-top: 20px;
-        }
+@media (max-width: 768px) {
+    .card-header h1 {
+        font-size: 1.5rem;
+    }
+}
 
-        footer {
-            background-color: #222;
-            color: #fff;
-            text-align: center;
-            padding: 10px 0;
-        }
+footer {
+    background-color: #222;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+     position: fixed;
+    bottom: 0;
+    width: 100%;
+}
 
-        footer h5 {
-            margin: 0;
-        }
-    </style>
+footer h5 {
+    margin: 0;
+}
+</style>
+
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </head>
 <body>
     <!-- Header -->
-    <header>
-        <h1>Car Price Prediction Model 🚗</h1>
+    <header class="text-center py-3">
+        <h1 style="font-family: cursive; font-size: 2rem; font-weight: bold; color: #0c0c0c;">
+            Car Price Prediction Model 🚗
+        </h1>
     </header>
 
     <!-- Main Content -->
-    <main>
-        <div class="card">
-            <div class="card-header">
-                <h1><b>CAR PRICE Predictor 🚗💸</b></h1>
-            </div>
-            <div class="card-body">
-                <h5>Car Price Prediction Model!</h5>
-                <form method="post" name="Modelform">
-                    <div class="form-group">
-                        <label><b>Select the Company:</b></label>
-                        <select class="form-control" id="company" name="company" required>
-                            {% for company in companies %}
-                            <option value="{{ company }}">{{ company }}</option>
-                            {% endfor %}
-                        </select>
+    <div class="container">
+        <div class="row">
+            <div class="card mt-5 col-md-8 offset-md-2">
+                <div class="card-header">
+                    <h1><b>CAR PRICE Predictor 🚗💸</b></h1>
+                </div>
+                <div class="card-body">
+                    <h5>Car Price Prediction Model!</h5>
+                    <form method="post" accept-charset="utf-8" name="Modelform">
+                        <div class="form-group">
+                            <label><b>Select the Company:</b></label>
+                            <select class="form-control" id="company" name="company" required onchange="load_car_models(this.id,'car_models')">
+                                {% for company in companies %}
+                                <option value="{{ company }}">{{ company }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label><b>Select the Model:</b></label>
+                            <select class="form-control" id="car_models" name="car_models" required></select>
+                        </div>
+                        <div class="form-group">
+                            <label><b>Select Year of Purchase:</b></label>
+                            <select class="form-control" id="year" name="year" required>
+                                {% for year in years %}
+                                <option value="{{ year }}">{{ year }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label><b>Select the Fuel Type:</b></label>
+                            <select class="form-control" id="fuel_type" name="fuel_type" required>
+                                {% for fuel in fuel_types %}
+                                <option value="{{ fuel }}">{{ fuel }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label><b>Enter Kilometres Driven:</b></label>
+                            <input type="text" class="form-control" id="kilo_driven" name="kilo_driven" placeholder="Enter kilometres driven">
+                        </div>
+                        <button class="btn btn-primary btn-block" onclick="send_data()">Predict Price 🚀</button>
+                    </form>
+                    <div>
+                        <h4><span id="prediction">Waiting for your input...</span></h4>
                     </div>
-                    <div class="form-group">
-                        <label><b>Select the Model:</b></label>
-                        <select class="form-control" id="car_models" name="car_models" required></select>
-                    </div>
-                    <div class="form-group">
-                        <label><b>Select Year of Purchase:</b></label>
-                        <select class="form-control" id="year" name="year" required>
-                            {% for year in years %}
-                            <option value="{{ year }}">{{ year }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label><b>Select the Fuel Type:</b></label>
-                        <select class="form-control" id="fuel_type" name="fuel_type" required>
-                            {% for fuel in fuel_types %}
-                            <option value="{{ fuel }}">{{ fuel }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label><b>Enter Kilometres Driven:</b></label>
-                        <input type="text" class="form-control" id="kilo_driven" name="kilo_driven" placeholder="Enter kilometres driven">
-                    </div>
-                    <button type="button" class="btn btn-primary btn-block" onclick="send_data()">Predict Price 🚀</button>
-                </form>
-                <div>
-                    <h4><span id="prediction">Waiting for your input...</span></h4>
                 </div>
             </div>
         </div>
-    </main>
+    </div>
 
     <!-- Footer -->
     <footer>
         <h5><b>Made with <span style="color: #ff6f91;">❤️</span></b></h5>
     </footer>
 
-    <!-- Scripts -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-
+    <!-- JavaScript -->
     <script>
+        function load_car_models(company_id, car_model_id) {
+            var company = document.getElementById(company_id);
+            var car_model = document.getElementById(car_model_id);
+            car_model.innerHTML = "";
+            {% for company in companies %}
+            if (company.value == "{{ company }}") {
+                {% for model in car_models %}
+                {% if company in model %}
+                var newOption = document.createElement("option");
+                newOption.value = "{{ model }}";
+                newOption.innerHTML = "{{ model }}";
+                car_model.appendChild(newOption);
+                {% endif %}
+                {% endfor %}
+            }
+            {% endfor %}
+        }
+
+        function form_handler(event) {
+            event.preventDefault();
+        }
+
         function send_data() {
-            document.querySelector('form').addEventListener("submit", function(e){ e.preventDefault(); });
+            document.querySelector('form').addEventListener("submit", form_handler);
             var fd = new FormData(document.querySelector('form'));
             var xhr = new XMLHttpRequest();
             xhr.open('POST', '/predict', true);
