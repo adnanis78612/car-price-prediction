@@ -45,9 +45,15 @@ def predict():
                             data=[[car_model, company, year, driven, fuel_type]])
 
         # Make prediction
-        prediction = model.predict(data)
+        prediction = model.predict(data)[0]
 
-        return str(np.round(prediction[0], 2))
+        # Clip negative predictions to 0
+        prediction = max(0, prediction)
+
+        # Format with ₹ and commas
+        prediction_formatted = f"₹{int(prediction):,}"
+
+        return prediction_formatted
 
     except Exception as e:
         print("Prediction error:", e)
